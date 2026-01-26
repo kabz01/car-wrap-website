@@ -1,245 +1,168 @@
-# Car Wrap Company Website 🚗
+# Car Wrap Company Website
 
-A modern, professional website for a car wrap, PPF (Paint Protection Film), and ceramic coating business. Built with cutting-edge web technologies to deliver a seamless user experience.
+A modern, professional website for a car wrap, PPF (Paint Protection Film), and ceramic coating business. Built with Next.js 14, this system provides a complete solution for showcasing services, managing customer inquiries, and displaying an extensive gallery of wrap colors and vehicle transformations.
 
-![Car Wrap Website](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/homepage.png)
+![Next.js](https://img.shields.io/badge/Next.js-14.2+-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-18+-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4+-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Environment Variables](#environment-variables)
-- [Deployment](#deployment)
+- [System Overview](#system-overview)
+- [Technology Stack](#technology-stack)
+- [Installation](#installation)
 - [Screenshots](#screenshots)
+- [Deployment](#deployment)
 - [License](#license)
 
-## ✨ Features
+## Features
 
-### 🎨 Services Showcase
-- **Car Wraps Gallery** - Browse 30+ premium wrap colors with advanced filtering
-- **Paint Protection Film (PPF)** - Detailed information about paint protection services
-- **Ceramic Coating** - Professional ceramic coating services
-- **Custom Design** - Interactive car wrap customization tool
+### Service Showcase
+- **Car Wraps Gallery** - Browse 30+ premium wrap colors with advanced filtering by color, finish type, and category
+- **Paint Protection Film (PPF)** - Comprehensive information about paint protection services and benefits
+- **Ceramic Coating** - Detailed ceramic coating service offerings with pricing and packages
+- **Custom Design Tool** - Interactive car wrap customization interface
 
-### 🌟 User Experience
-- **Responsive Design** - Fully optimized for mobile, tablet, and desktop
-- **Dark/Light Mode** - Automatic theme switching based on user preference
-- **Smooth Animations** - Powered by Framer Motion for fluid transitions
-- **Fast Performance** - Server-side rendering with Next.js 14
-- **SEO Optimized** - Built-in SEO features for better search visibility
+### User Experience
+- **Responsive Design** - Fully optimized for mobile, tablet, and desktop devices
+- **Dark/Light Mode** - Automatic theme switching based on user preferences
+- **Smooth Animations** - Fluid transitions powered by Framer Motion
+- **Fast Performance** - Server-side rendering with Next.js 14 App Router
+- **SEO Optimized** - Built-in SEO features for better search engine visibility
 
-### 📝 Forms & Contact
-- **Quote Request Forms** - Easy-to-use forms for service inquiries
-- **Contact Forms** - Multiple ways to get in touch
-- **Offline Support** - Forms work even without internet connection
+### Forms & Communication
+- **Quote Request Forms** - Easy-to-use forms for service inquiries with validation
+- **Contact Forms** - Multiple contact methods with offline support
+- **Offline-First** - Forms work without internet connection and sync automatically
 
-### 🖼️ Gallery
-- **Workshop Gallery** - Real installation photos
-- **Before/After Showcase** - Visual proof of quality work
-- **Vehicle Categories** - SUVs, Sedans, Coupes, and more
+### Gallery & Portfolio
+- **Workshop Gallery** - Real installation photos and before/after transformations
+- **Vehicle Categories** - Organized by SUVs, Sedans, Coupes, Hatchbacks, and more
+- **High-Quality Images** - Optimized image loading with Next.js Image component
 
-## 🛠️ Tech Stack
+## System Overview
 
-### Frontend Framework
-- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
-- **[React 18](https://react.dev/)** - UI library
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
+The website is built using modern web technologies to ensure fast performance, excellent user experience, and easy maintenance. The architecture follows Next.js 14 best practices with server-side rendering for optimal SEO.
 
-### Styling & UI
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
-- **[Framer Motion](https://www.framer.com/motion/)** - Animation library
-- **[Lucide React](https://lucide.dev/)** - Beautiful icon library
+### Key Components
 
-### Backend & Database
-- **[Supabase](https://supabase.com/)** (Optional) - Backend as a Service
-  - Database for storing form submissions
+- **App Router** - Modern Next.js routing with nested layouts
+- **Server Components** - Reduced JavaScript bundle size for faster loading
+- **Client Components** - Interactive features with React 18
+- **API Integration** - Optional Supabase backend for data storage
+- **Theme System** - Dark/light mode with persistent user preferences
+
+### Database (Optional)
+
+The system can work standalone or integrate with Supabase for:
+- Quote submission storage
+- Contact form management
+- Analytics and tracking
+- User authentication (if needed)
+
+## Technology Stack
+
+### Frontend
+- **Next.js 14** - React framework with App Router
+- **React 18** - UI library with server components
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+
+### UI Components
+- **Radix UI** - Accessible component primitives
+- **Framer Motion** - Animation library
+- **Lucide React** - Icon library
+- **React Hook Form** - Form handling with validation
+- **Zod** - Schema validation
+
+### Backend (Optional)
+- **Supabase** - Backend as a Service
+  - PostgreSQL database
   - Real-time capabilities
   - Authentication ready
 
-### Form Handling
-- **[React Hook Form](https://react-hook-form.com/)** - Performant form validation
-- **[Zod](https://zod.dev/)** - Schema validation
-- **[@hookform/resolvers](https://github.com/react-hook-form/resolvers)** - Form resolver integration
-
-### Additional Libraries
-- **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme management
-- **[class-variance-authority](https://cva.style/docs)** - CSS utility for components
-- **[clsx](https://github.com/lukeed/clsx)** & **[tailwind-merge](https://github.com/dcastil/tailwind-merge)** - Conditional classes
-
-## 🚀 Getting Started
+## Installation
 
 ### Prerequisites
+- Node.js 18.x or higher
+- npm or pnpm package manager
 
-- **Node.js** 18.x or higher
-- **npm** or **pnpm** package manager
-- Git
+### Setup
 
-### Installation
+```bash
+# Clone the repository
+git clone https://github.com/kabz01/car-wrap-company.git
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/kabz01/car-wrap-company.git
-   cd car-wrap-company
-   ```
+# Navigate to project directory
+cd car-wrap-company
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   pnpm install
-   ```
+# Install dependencies
+npm install
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+# Run development server
+npm run dev
+```
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
 ### Build for Production
 
 ```bash
 npm run build
-npm run start
+npm start
 ```
 
-## 📁 Project Structure
-
-```
-car-wrap-company/
-├── app/                      # Next.js App Router
-│   ├── about/               # About page
-│   ├── car-wraps/           # Car wraps gallery
-│   ├── ceramic-coating/     # Ceramic coating service
-│   ├── components/          # Page-specific components
-│   │   ├── header.tsx       # Navigation header
-│   │   └── footer.tsx       # Site footer
-│   ├── contact/             # Contact page
-│   ├── customize/           # Car customization tool
-│   ├── paint-protection/    # PPF service page
-│   ├── services/            # Services overview
-│   ├── layout.tsx           # Root layout
-│   ├── page.tsx             # Homepage
-│   └── globals.css          # Global styles
-├── components/              # Reusable components
-│   ├── ui/                  # UI component library
-│   ├── theme-provider.tsx   # Theme context
-│   └── theme-toggle.tsx     # Dark mode toggle
-├── hooks/                   # Custom React hooks
-├── lib/                     # Utility libraries
-│   ├── supabase.ts         # Supabase client
-│   └── utils.ts            # Helper functions
-├── public/                  # Static assets
-│   └── images/             # Image assets
-│       ├── services/       # Service photos
-│       └── wraps/          # Wrap color samples
-└── styles/                  # Additional styles
-```
-
-## 🔐 Environment Variables
-
-The application works without environment variables, but for full functionality (database submissions), create a `.env.local` file:
-
-```env
-# Supabase Configuration (Optional)
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-### Without Supabase
-The website will work perfectly without database integration. Form submissions will be stored locally in the browser's localStorage as a fallback.
-
-## 🌐 Deployment
-
-### Deploy to Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Add environment variables (if using Supabase)
-4. Deploy!
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kabz01/car-wrap-company)
-
-### Deploy to Netlify
-
-1. Connect your repository
-2. Build command: `npm run build`
-3. Publish directory: `.next`
-4. Add environment variables
-
-## 📸 Screenshots
+## Screenshots
 
 ### Homepage
 ![Homepage](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/homepage.png)
 
-The homepage features a stunning hero section with call-to-action buttons, service highlights, and customer testimonials.
-
 ### Car Wraps Gallery
 ![Car Wraps Gallery](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/car-wraps-gallery.png)
-
-Browse through 30+ premium wrap colors with live filtering by color, finish type, and category.
 
 ### Services Page
 ![Services](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/services.png)
 
-Detailed information about all services offered including car wraps, PPF, and ceramic coating.
-
-### Paint Protection Film (PPF)
+### Paint Protection Film
 ![PPF](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/ppf.png)
-
-Comprehensive Paint Protection Film service page with detailed information about protecting your vehicle's paint.
 
 ### Ceramic Coating
 ![Ceramic Coating](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/ceramic-coating.png)
 
-Professional ceramic coating services to keep your vehicle looking pristine with long-lasting protection.
-
 ### Contact Page
 ![Contact](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/contact.png)
-
-Easy-to-use contact forms with offline support and instant validation.
 
 ### Dark Mode
 ![Dark Mode](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/dark-mode.png)
 
-Beautiful dark mode implementation that respects user preferences.
+## Deployment
 
-## 🎯 Key Features Explained
+### Deploy to Vercel (Recommended)
 
-### Offline-First Architecture
-The application includes fallback mechanisms for when users are offline:
-- Form submissions are stored locally
-- Automatic sync when connection is restored
-- No data loss even without internet
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kabz01/car-wrap-company)
 
-### Performance Optimization
-- **Image Optimization** - Next.js automatic image optimization
-- **Code Splitting** - Automatic route-based code splitting
-- **Server Components** - Reduced JavaScript bundle size
-- **Lazy Loading** - Images and components load on demand
+1. Push your code to GitHub
+2. Import your repository on [Vercel](https://vercel.com)
+3. Configure environment variables (if using Supabase)
+4. Deploy
 
-### SEO Ready
-- Semantic HTML structure
-- Meta tags and Open Graph support
-- Sitemap generation
-- Structured data markup
+### Environment Variables
 
-## 🤝 Contributing
+Create a `.env.local` file for optional Supabase integration:
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-## 📄 License
+The website works perfectly without these variables using localStorage fallback.
+
+## License
 
 © 2025 Car Wrap Company. All rights reserved.
 
-## 📧 Contact
-
-For support or inquiries, please visit the contact page on the website.
-
 ---
 
-**Built with ❤️ using Next.js 14**
+Built with Next.js 14 and deployed on Vercel.
