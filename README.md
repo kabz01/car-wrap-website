@@ -2,7 +2,7 @@
 
 A modern, professional website for a car wrap, PPF (Paint Protection Film), and ceramic coating business. Built with cutting-edge web technologies to deliver a seamless user experience.
 
-![Car Wrap Website](https://via.placeholder.com/1200x600/1a1a1a/ffffff?text=Car+Wrap+Company+Website)
+![Car Wrap Website](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/homepage.png)
 
 ## 📋 Table of Contents
 
@@ -174,27 +174,37 @@ The website will work perfectly without database integration. Form submissions w
 ## 📸 Screenshots
 
 ### Homepage
-![Homepage](https://via.placeholder.com/1200x600/1a1a1a/ffffff?text=Homepage+Screenshot)
+![Homepage](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/homepage.png)
 
 The homepage features a stunning hero section with call-to-action buttons, service highlights, and customer testimonials.
 
 ### Car Wraps Gallery
-![Car Wraps Gallery](https://via.placeholder.com/1200x600/1a1a1a/ffffff?text=Car+Wraps+Gallery)
+![Car Wraps Gallery](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/car-wraps-gallery.png)
 
 Browse through 30+ premium wrap colors with live filtering by color, finish type, and category.
 
 ### Services Page
-![Services](https://via.placeholder.com/1200x600/1a1a1a/ffffff?text=Services+Page)
+![Services](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/services.png)
 
 Detailed information about all services offered including car wraps, PPF, and ceramic coating.
 
+### Paint Protection Film (PPF)
+![PPF](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/ppf.png)
+
+Comprehensive Paint Protection Film service page with detailed information about protecting your vehicle's paint.
+
+### Ceramic Coating
+![Ceramic Coating](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/ceramic-coating.png)
+
+Professional ceramic coating services to keep your vehicle looking pristine with long-lasting protection.
+
 ### Contact Page
-![Contact](https://via.placeholder.com/1200x600/1a1a1a/ffffff?text=Contact+Page)
+![Contact](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/contact.png)
 
 Easy-to-use contact forms with offline support and instant validation.
 
 ### Dark Mode
-![Dark Mode](https://via.placeholder.com/1200x600/0a0a0a/ffffff?text=Dark+Mode)
+![Dark Mode](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/dark-mode.png)
 
 Beautiful dark mode implementation that respects user preferences.
 
