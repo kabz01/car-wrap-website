@@ -1,6 +1,6 @@
 # Car Wrap Company Website
 
-A modern, professional website for a car wrap, PPF (Paint Protection Film), and ceramic coating business. Built with Next.js 14, this system provides a complete solution for showcasing services, managing customer inquiries, and displaying an extensive gallery of wrap colors and vehicle transformations.
+A modern, professional website for a car wrap, PPF (Paint Protection Film) and ceramic coating business. Built with Next.js 14, this system provides a complete solution for showcasing services, managing customer inquiries and displaying an extensive gallery of wrap colors and vehicle transformations.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14.2+-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-18+-blue?style=for-the-badge&logo=react)
@@ -12,10 +12,8 @@ A modern, professional website for a car wrap, PPF (Paint Protection Film), and 
 - [Features](#features)
 - [System Overview](#system-overview)
 - [Technology Stack](#technology-stack)
-- [Installation](#installation)
 - [Screenshots](#screenshots)
-- [Deployment](#deployment)
-- [License](#license)
+
 
 ## Features
 
@@ -44,7 +42,7 @@ A modern, professional website for a car wrap, PPF (Paint Protection Film), and 
 
 ## System Overview
 
-The website is built using modern web technologies to ensure fast performance, excellent user experience, and easy maintenance. The architecture follows Next.js 14 best practices with server-side rendering for optimal SEO.
+The website is built using modern web technologies to ensure fast performance, excellent user experience and easy maintenance. The architecture follows Next.js 14 best practices with server-side rendering for optimal SEO.
 
 ### Key Components
 
@@ -89,30 +87,8 @@ The system can work standalone or integrate with Supabase for:
 - Node.js 18.x or higher
 - npm or pnpm package manager
 
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/kabz01/car-wrap-company.git
-
-# Navigate to project directory
-cd car-wrap-company
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) to view the website.
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
 
 ## Screenshots
 
@@ -137,32 +113,6 @@ npm start
 ### Dark Mode
 ![Dark Mode](https://raw.githubusercontent.com/kabz01/car-wrap-company/main/public/screenshots/dark-mode.png)
 
-## Deployment
 
-### Deploy to Vercel (Recommended)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kabz01/car-wrap-company)
 
-1. Push your code to GitHub
-2. Import your repository on [Vercel](https://vercel.com)
-3. Configure environment variables (if using Supabase)
-4. Deploy
-
-### Environment Variables
-
-Create a `.env.local` file for optional Supabase integration:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-The website works perfectly without these variables using localStorage fallback.
-
-## License
-
-© 2025 Car Wrap Company. All rights reserved.
-
----
-
-Built with Next.js 14 and deployed on Vercel.
