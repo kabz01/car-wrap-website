@@ -21,40 +21,23 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
+    
+    // Track the button click
+    trackButtonClick("Submit Contact Form")
 
-    try {
-      // Track the button click
-      trackButtonClick("Submit Contact Form")
+    const message = `Hello! I have a message for you:
 
-      // Prepare contact data
-      const contactData = {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        created_at: new Date().toISOString(),
-      }
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Message:* ${formData.message}
 
-      // Submit contact form to Supabase
-      const result = await submitContactForm(contactData)
+Please get back to me. Thank you!`
 
-      // Always clear the form and show success to the user
-      setFormData({ name: "", email: "", message: "" })
-      toast({
-        title: "Message Sent",
-        description: "Your message has been successfully sent!",
-      })
-    } catch (error) {
-      console.error("Error in contact form submission process:", error)
-      // Clear form for better UX
-      setFormData({ name: "", email: "", message: "" })
-      toast({
-        title: "Message Received",
-        description: "We've received your message and will be in touch soon.",
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappNumber = "254795557083"
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    window.open(whatsappUrl, "_blank")
   }
 
   return (

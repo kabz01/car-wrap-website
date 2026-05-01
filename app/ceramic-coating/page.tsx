@@ -14,6 +14,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export default function CeramicCoating() {
   const [activeTab, setActiveTab] = useState("before")
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [quoteForm, setQuoteForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    coatingType: "",
+  })
 
   const handleNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % 5)
@@ -23,10 +29,35 @@ export default function CeramicCoating() {
     setCurrentSlide((prev) => (prev - 1 + 5) % 5)
   }
 
+  const handleGetQuote = () => {
+    const coatingTypeLabels: { [key: string]: string } = {
+      "9h": "9H Ceramic Coating - 35,000 Kshs",
+      "10h": "10H Glass Coating - 40,000 Kshs",
+      "12h": "12H Graphene Coating - 50,000 Kshs",
+      "20h": "20H Premium Coating - 70,000 Kshs",
+      "crystal": "Crystal Interior Coating - 20,000 Kshs",
+    }
+
+    const message = `Hello! I would like to get a quote for Ceramic Coating.
+
+*Name:* ${quoteForm.name || "Not provided"}
+*Email:* ${quoteForm.email || "Not provided"}
+*Phone:* ${quoteForm.phone || "Not provided"}
+*Coating Type:* ${quoteForm.coatingType ? coatingTypeLabels[quoteForm.coatingType] : "Not selected"}
+
+Please provide me with more details. Thank you!`
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappNumber = "254795557083"
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    window.open(whatsappUrl, "_blank")
+  }
+
   const features = [
     {
       title: "UV Protection",
-      description: "Shield your car wrap from harmful UV rays that cause fading and discoloration.",
+      description: "Shield your ceramic coating from harmful UV rays that cause fading and discoloration.",
       icon: "☀️",
     },
     {
@@ -47,7 +78,7 @@ export default function CeramicCoating() {
     },
     {
       title: "Enhanced Gloss",
-      description: "Achieve a mirror-like finish that boosts the visual appeal of your car wrap.",
+      description: "Achieve a mirror-like finish that boosts the visual appeal of your ceramic coating.",
       icon: "✨",
     },
   ]
@@ -103,7 +134,7 @@ export default function CeramicCoating() {
         </div>
       </section>
 
-      {/* Ceramic Coating + Car Wrap Benefits */}
+      {/* Ceramic Coating Benefits */}
       <section className="bg-gray-100 dark:bg-gray-900 py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -143,7 +174,7 @@ export default function CeramicCoating() {
                   className="flex items-start"
                 >
                   <span className="text-primary text-2xl mr-2">✓</span>
-                  <span>Easier maintenance: Keep your wrapped vehicle looking pristine with minimal effort</span>
+                  <span>Easier maintenance: Keep your ceramic coated vehicle looking pristine with minimal effort</span>
                 </motion.li>
               </ul>
             </div>
@@ -397,19 +428,36 @@ export default function CeramicCoating() {
                 <CardContent className="space-y-4">
                   <div>
                     <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Your name" />
+                    <Input 
+                      id="name" 
+                      placeholder="Your name"
+                      value={quoteForm.name}
+                      onChange={(e) => setQuoteForm({ ...quoteForm, name: e.target.value })}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Your email" />
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      placeholder="Your email"
+                      value={quoteForm.email}
+                      onChange={(e) => setQuoteForm({ ...quoteForm, email: e.target.value })}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" type="tel" placeholder="Your phone number" />
+                    <Input 
+                      id="phone" 
+                      type="tel" 
+                      placeholder="Your phone number"
+                      value={quoteForm.phone}
+                      onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
+                    />
                   </div>
                   <div>
                     <Label htmlFor="coating-type">Coating Type</Label>
-                    <Select>
+                    <Select value={quoteForm.coatingType} onValueChange={(value) => setQuoteForm({ ...quoteForm, coatingType: value })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select coating type" />
                       </SelectTrigger>
@@ -422,7 +470,7 @@ export default function CeramicCoating() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <Button className="w-full">Get Quote</Button>
+                  <Button className="w-full" onClick={handleGetQuote}>Get Quote</Button>
                 </CardContent>
               </Card>
             </motion.div>

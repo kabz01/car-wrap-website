@@ -298,12 +298,33 @@ export default function CarWraps() {
         created_at: new Date().toISOString(),
       }
 
+      // Save to Supabase
       await submitQuoteRequest(quoteData)
+
+      // Send emails
+      const emailData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        colorName: selectedColorDetails?.name || "",
+        carType: selectedCarTypeDetails?.name || "",
+        totalPrice: selectedCarTypeDetails?.price || 0,
+      }
+
+      await fetch('/api/send-quote-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData),
+      })
+
       setQuoteSubmitted(true)
 
       toast({
         title: "Quote Submitted Successfully! 🎉",
-        description: "We'll get back to you within 24 hours.",
+        description: "Check your email for confirmation. We'll get back to you within 24 hours.",
       })
     } catch (error) {
       setQuoteSubmitted(true)

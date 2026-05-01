@@ -59,9 +59,38 @@ export default function PaintProtection() {
       scale: 0.9,
     })),
   )
+  const [quoteForm, setQuoteForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    ppfType: "",
+  })
 
   const featureRefs = useRef<(HTMLDivElement | null)[]>([])
   const ppfTypeRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  const handleGetQuote = () => {
+    const ppfTypeLabels: { [key: string]: string } = {
+      pp1: "PP1 (7.5 mil) - 140,000 Kshs",
+      pp2: "PP2 (8.5 mil) - 180,000 Kshs",
+      pp3: "PP3 (10 mil) - 220,000 Kshs",
+    }
+
+    const message = `Hello! I would like to get a quote for PPF installation.
+
+*Name:* ${quoteForm.name || "Not provided"}
+*Email:* ${quoteForm.email || "Not provided"}
+*Phone:* ${quoteForm.phone || "Not provided"}
+*PPF Type:* ${quoteForm.ppfType ? ppfTypeLabels[quoteForm.ppfType] : "Not selected"}
+
+Please provide me with more details. Thank you!`
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappNumber = "254795557083"
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    window.open(whatsappUrl, "_blank")
+  }
 
   const isElementInViewport = useCallback((el: HTMLElement | null) => {
     if (!el) return false
@@ -419,19 +448,36 @@ export default function PaintProtection() {
               <CardContent className="space-y-4 mt-4">
                 <div>
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your name" />
+                  <Input 
+                    id="name" 
+                    placeholder="Your name"
+                    value={quoteForm.name}
+                    onChange={(e) => setQuoteForm({ ...quoteForm, name: e.target.value })}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Your email" />
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="Your email"
+                    value={quoteForm.email}
+                    onChange={(e) => setQuoteForm({ ...quoteForm, email: e.target.value })}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="phone">Phone</Label>
-                  <Input id="phone" type="tel" placeholder="Your phone number" />
+                  <Input 
+                    id="phone" 
+                    type="tel" 
+                    placeholder="Your phone number"
+                    value={quoteForm.phone}
+                    onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="ppf-type">PPF Type</Label>
-                  <Select>
+                  <Select value={quoteForm.ppfType} onValueChange={(value) => setQuoteForm({ ...quoteForm, ppfType: value })}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select PPF type" />
                     </SelectTrigger>
@@ -442,7 +488,7 @@ export default function PaintProtection() {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button className="w-full">Get Quote</Button>
+                <Button className="w-full" onClick={handleGetQuote}>Get Quote</Button>
               </CardContent>
             </Card>
           </motion.div>
@@ -455,7 +501,14 @@ export default function PaintProtection() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h2 className="text-3xl font-bold mb-8">Ready to Protect Your Vehicle?</h2>
             <p className="text-xl mb-8">Experience the ultimate protection with our premium PPF solutions.</p>
-            <Button size="lg" variant="secondary" className="transform transition-all hover:scale-105 hover:shadow-lg">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="transform transition-all hover:scale-105 hover:shadow-lg"
+              onClick={() => {
+                window.open("https://calendar.google.com/calendar/u/0/r", "_blank")
+              }}
+            >
               Schedule Installation
             </Button>
           </motion.div>
