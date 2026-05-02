@@ -822,6 +822,30 @@ export default function CarWraps() {
           )}
         </AnimatePresence>
       </section>
+
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <h2 className="text-3xl font-bold mb-8">Ready to Transform Your Vehicle?</h2>
+            <p className="text-xl mb-8">Schedule your car wrap installation with our expert team today.</p>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="transform transition-all hover:scale-105 hover:shadow-lg"
+              onClick={() => {
+                const eventTitle = encodeURIComponent("Car Wrap Installation - Millan Auto Customs")
+                const eventDetails = encodeURIComponent("Professional Car Wrap installation appointment at Millan Auto Customs.\n\nLocation: Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will transform your vehicle with premium quality wraps. Installation typically takes 1-3 days depending on coverage.")
+                const location = encodeURIComponent("Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya")
+                const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&add=millanautocustoms@icloud.com`
+                window.open(calendarUrl, "_blank")
+              }}
+            >
+              Schedule Installation
+            </Button>
+          </motion.div>
+        </div>
+      </section>
     </div>
   )
 }

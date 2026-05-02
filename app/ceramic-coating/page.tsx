@@ -99,7 +99,17 @@ Please provide me with more details. Thank you!`
             unparalleled durability and a showroom-worthy shine that lasts for years.
           </p>
           <p className="text-2xl font-semibold text-primary mb-8">Protect Today, Shine Forever</p>
-          <Button size="lg" className="text-lg">
+          <Button 
+            size="lg" 
+            className="text-lg"
+            onClick={() => {
+              const eventTitle = encodeURIComponent("Ceramic Coating Service - Millan Auto Customs")
+              const eventDetails = encodeURIComponent("Professional Ceramic Coating service appointment at Millan Auto Customs.\n\nLocation: Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will apply premium ceramic coating for ultimate protection and shine. Installation typically takes 1-2 days.")
+              const location = encodeURIComponent("Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya")
+              const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&add=millanautocustoms@icloud.com`
+              window.open(calendarUrl, "_blank")
+            }}
+          >
             Schedule Your Coating
           </Button>
         </motion.div>
@@ -484,7 +494,18 @@ Please provide me with more details. Thank you!`
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h2 className="text-3xl font-bold mb-8">Ready to Elevate Your Vehicle's Protection?</h2>
             <p className="text-xl mb-8">Experience the ultimate in paint protection and visual enhancement.</p>
-            <Button size="lg" variant="secondary" className="text-lg">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="text-lg"
+              onClick={() => {
+                const eventTitle = encodeURIComponent("Ceramic Coating Service - Millan Auto Customs")
+                const eventDetails = encodeURIComponent("Professional Ceramic Coating service appointment at Millan Auto Customs.\n\nLocation: Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will apply premium ceramic coating for ultimate protection and shine. Installation typically takes 1-2 days.")
+                const location = encodeURIComponent("Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya")
+                const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&add=millanautocustoms@icloud.com`
+                window.open(calendarUrl, "_blank")
+              }}
+            >
               Schedule Your Ceramic Coating
             </Button>
           </motion.div>

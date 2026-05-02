@@ -506,7 +506,11 @@ Please provide me with more details. Thank you!`
               variant="secondary"
               className="transform transition-all hover:scale-105 hover:shadow-lg"
               onClick={() => {
-                window.open("https://calendar.google.com/calendar/u/0/r", "_blank")
+                const eventTitle = encodeURIComponent("Paint Protection Film Installation - Millan Auto Customs")
+                const eventDetails = encodeURIComponent("Paint Protection Film (PPF) installation appointment at Millan Auto Customs.\n\nLocation: Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nPlease arrive 10 minutes early. Our expert technicians will provide professional PPF installation with premium materials.")
+                const location = encodeURIComponent("Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya")
+                const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&add=millanautocustoms@icloud.com`
+                window.open(calendarUrl, "_blank")
               }}
             >
               Schedule Installation

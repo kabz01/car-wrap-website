@@ -121,11 +121,11 @@ Please get back to me. Thank you!`
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-2">Rubis, Karen (Westwood Drive)</h3>
-                <p>Westwood Drive, Karen, Nairobi, Kenya</p>
+                <h3 className="text-xl font-semibold mb-2">Millan Auto Customs</h3>
+                <p>Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya</p>
                 <div className="mt-4 h-64 w-full rounded-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7799510332!2d36.7059!3d-1.3237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a6bf7554a3f%3A0x7f11e5dcd8a3a0ab!2sRubis%20Karen!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8192!2d36.7051!3d-1.3181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a6c8f7a4e5d%3A0x9e1f3b2c4a5d6e7f!2sShell%20Kerarapon!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
