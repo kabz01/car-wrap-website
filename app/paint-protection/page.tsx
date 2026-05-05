@@ -71,9 +71,9 @@ export default function PaintProtection() {
 
   const handleGetQuote = () => {
     const ppfTypeLabels: { [key: string]: string } = {
-      pp1: "PP1 (7.5 mil) - 140,000 Kshs",
-      pp2: "PP2 (8.5 mil) - 180,000 Kshs",
-      pp3: "PP3 (10 mil) - 220,000 Kshs",
+      pp1: "PPF1 (Basic) - 125,000 Kshs",
+      pp2: "PPF2 (Standard) - 150,000 Kshs",
+      pp3: "PPF3 (Premium) - 175,000 Kshs",
     }
 
     const message = `Hello! I would like to get a quote for PPF installation.
@@ -362,7 +362,7 @@ Please provide me with more details. Thank you!`
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="pp1">
-                <AccordionTrigger>PP1 (7.5 mil) - 140,000 Kshs | 1 Year Warranty</AccordionTrigger>
+                <AccordionTrigger>PPF1 (Basic) - 125,000 Kshs | 1 Year Warranty</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-2">
                     <p className="font-medium">
@@ -383,7 +383,7 @@ Please provide me with more details. Thank you!`
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="pp2">
-                <AccordionTrigger>PP2 (8.5 mil) - 180,000 Kshs | 1.5 Year Warranty</AccordionTrigger>
+                <AccordionTrigger>PPF2 (Standard) - 150,000 Kshs | 1.5 Year Warranty</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-2">
                     <p className="font-medium">
@@ -406,7 +406,7 @@ Please provide me with more details. Thank you!`
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="pp3">
-                <AccordionTrigger>PP3 (10 mil) - 220,000 Kshs | 2 Year Warranty</AccordionTrigger>
+                <AccordionTrigger>PPF3 (Premium) - 175,000 Kshs | 2 Year Warranty</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-2">
                     <p className="font-medium">
@@ -482,9 +482,9 @@ Please provide me with more details. Thank you!`
                       <SelectValue placeholder="Select PPF type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="pp1">PP1 (7.5 mil) - 140,000 Kshs</SelectItem>
-                      <SelectItem value="pp2">PP2 (8.5 mil) - 180,000 Kshs</SelectItem>
-                      <SelectItem value="pp3">PP3 (10 mil) - 220,000 Kshs</SelectItem>
+                      <SelectItem value="pp1">PPF1 (Basic) - 125,000 Kshs</SelectItem>
+                      <SelectItem value="pp2">PPF2 (Standard) - 150,000 Kshs</SelectItem>
+                      <SelectItem value="pp3">PPF3 (Premium) - 175,000 Kshs</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

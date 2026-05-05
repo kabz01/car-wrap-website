@@ -31,11 +31,10 @@ export default function CeramicCoating() {
 
   const handleGetQuote = () => {
     const coatingTypeLabels: { [key: string]: string } = {
-      "9h": "9H Ceramic Coating - 35,000 Kshs",
-      "10h": "10H Glass Coating - 40,000 Kshs",
-      "12h": "12H Graphene Coating - 50,000 Kshs",
-      "20h": "20H Premium Coating - 70,000 Kshs",
-      "crystal": "Crystal Interior Coating - 20,000 Kshs",
+      "10h": "10H Basic Coating - 30,000 Kshs",
+      "12h": "12H Standard coating - 42,000 Kshs",
+      "20h": "20H premium coating - 56,000 Kshs",
+      "crystal": "Crystal Interior coating - 20,000 Kshs",
     }
 
     const message = `Hello! I would like to get a quote for Ceramic Coating.
@@ -397,32 +396,26 @@ Please provide me with more details. Thank you!`
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="9h">
-                  <AccordionTrigger>9H Ceramic Coating - 35,000 Kshs</AccordionTrigger>
+                <AccordionItem value="10h">
+                  <AccordionTrigger>10H Basic Coating - 30,000 Kshs</AccordionTrigger>
                   <AccordionContent>
                     <p>Entry-level ceramic coating perfect for those new to paint protection.</p>
                   </AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="10h">
-                  <AccordionTrigger>10H Glass Coating - 40,000 Kshs</AccordionTrigger>
-                  <AccordionContent>
-                    <p>Specialized coating for maximum glass protection and clarity.</p>
-                  </AccordionContent>
-                </AccordionItem>
                 <AccordionItem value="12h">
-                  <AccordionTrigger>12H Graphene Coating - 50,000 Kshs</AccordionTrigger>
+                  <AccordionTrigger>12H Standard coating - 42,000 Kshs</AccordionTrigger>
                   <AccordionContent>
                     <p>Advanced protection with graphene technology for superior durability.</p>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="20h">
-                  <AccordionTrigger>20H Premium Coating - 70,000 Kshs</AccordionTrigger>
+                  <AccordionTrigger>20H premium coating - 56,000 Kshs</AccordionTrigger>
                   <AccordionContent>
                     <p>Our flagship coating offering the ultimate in protection and durability.</p>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="crystal">
-                  <AccordionTrigger>Crystal Interior Coating - 20,000 Kshs</AccordionTrigger>
+                  <AccordionTrigger>Crystal Interior coating - 20,000 Kshs</AccordionTrigger>
                   <AccordionContent>
                     <p>Specialized coating for interior surfaces and plastic components.</p>
                   </AccordionContent>
@@ -472,11 +465,10 @@ Please provide me with more details. Thank you!`
                         <SelectValue placeholder="Select coating type" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="9h">9H Ceramic Coating - 35,000 Kshs</SelectItem>
-                        <SelectItem value="10h">10H Glass Coating - 40,000 Kshs</SelectItem>
-                        <SelectItem value="12h">12H Graphene Coating - 50,000 Kshs</SelectItem>
-                        <SelectItem value="20h">20H Premium Coating - 70,000 Kshs</SelectItem>
-                        <SelectItem value="crystal">Crystal Interior Coating - 20,000 Kshs</SelectItem>
+                        <SelectItem value="10h">10H Basic Coating - 30,000 Kshs</SelectItem>
+                        <SelectItem value="12h">12H Standard coating - 42,000 Kshs</SelectItem>
+                        <SelectItem value="20h">20H premium coating - 56,000 Kshs</SelectItem>
+                        <SelectItem value="crystal">Crystal Interior coating - 20,000 Kshs</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
