@@ -72,6 +72,99 @@ export default function Services() {
         ))}
       </div>
 
+      {/* Pricing Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="mb-20"
+      >
+        <h2 className="text-3xl font-bold text-center mb-12">Pricing</h2>
+        
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* PPF Pricing */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Card className="bg-gray-800 border-gray-700">
+              <CardHeader>
+                <CardTitle className="text-2xl mb-2">Paint Protection Film (PPF)</CardTitle>
+                <CardDescription className="text-gray-400">Premium protection for your vehicle</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-lg">Basic</h3>
+                    <p className="text-sm text-gray-400">Essential protection</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 125,000</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-lg">Standard</h3>
+                    <p className="text-sm text-gray-400">Enhanced coverage</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 150,000</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg border-2 border-blue-500">
+                  <div>
+                    <h3 className="font-semibold text-lg">Premium</h3>
+                    <p className="text-sm text-gray-400">Complete protection</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 175,000</span>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Ceramic Coating Pricing */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <Card className="bg-gray-800 border-gray-700">
+              <CardHeader>
+                <CardTitle className="text-2xl mb-2">Ceramic Coating</CardTitle>
+                <CardDescription className="text-gray-400">Long-lasting shine and protection</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-lg">10H Basic Coating</h3>
+                    <p className="text-sm text-gray-400">Entry-level protection</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 30,000</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-lg">12H Standard Coating</h3>
+                    <p className="text-sm text-gray-400">Advanced durability</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 42,000</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg border-2 border-blue-500">
+                  <div>
+                    <h3 className="font-semibold text-lg">20H Premium Coating</h3>
+                    <p className="text-sm text-gray-400">Maximum hardness</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 56,000</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-lg">Crystal Interior Coating</h3>
+                    <p className="text-sm text-gray-400">Interior protection</p>
+                  </div>
+                  <span className="text-2xl font-bold text-blue-400">KSh 20,000</span>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </motion.div>
+
       {/* Catalog Gallery Section */}
       <motion.div
         id="ppf-catalog"
