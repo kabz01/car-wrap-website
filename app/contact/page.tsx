@@ -135,6 +135,21 @@ Please get back to me. Thank you!`
                   ></iframe>
                 </div>
               </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Karen</h3>
+                <p>Mokoyeti Road West, Karen, Box 1075, Nairobi</p>
+                <div className="mt-4 h-64 w-full rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps?q=Mokoyeti+Road+West%2C+Karen%2C+Nairobi%2C+Kenya&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
               <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-lg border border-purple-500/20">
                 <h3 className="text-xl font-semibold mb-2">🚗 Mobile Service Available</h3>
                 <p className="text-gray-300">
