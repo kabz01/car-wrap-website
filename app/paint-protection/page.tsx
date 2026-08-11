@@ -74,6 +74,7 @@ export default function PaintProtection() {
       pp1: "PPF1 (Basic) - 125,000 Kshs",
       pp2: "PPF2 (Standard) - 150,000 Kshs",
       pp3: "PPF3 (Premium) - 175,000 Kshs",
+      colored: "Colored PPF - 215,000 Kshs",
     }
 
     const message = `Hello! I would like to get a quote for PPF installation.
@@ -362,7 +363,7 @@ Please provide me with more details. Thank you!`
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="pp1">
-                <AccordionTrigger>PPF1 (Basic) - 125,000 Kshs | 1 Year Warranty</AccordionTrigger>
+                <AccordionTrigger>PPF1 (Basic) - 125,000 Kshs</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-2">
                     <p className="font-medium">
@@ -376,14 +377,11 @@ Please provide me with more details. Thank you!`
                       <li>Easy maintenance and cleaning</li>
                       <li><strong>8 years of durability</strong></li>
                     </ul>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                      <strong>Warranty:</strong> 1 year coverage against peeling, cracking, and yellowing
-                    </p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="pp2">
-                <AccordionTrigger>PPF2 (Standard) - 150,000 Kshs | 1.5 Year Warranty</AccordionTrigger>
+                <AccordionTrigger>PPF2 (Standard) - 150,000 Kshs</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-2">
                     <p className="font-medium">
@@ -398,22 +396,18 @@ Please provide me with more details. Thank you!`
                       <li>Stain and chemical resistance</li>
                       <li><strong>10 years of durability</strong></li>
                     </ul>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                      <strong>Warranty:</strong> 1.5 year coverage against peeling, cracking, yellowing, and adhesion
-                      failure
-                    </p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="pp3">
-                <AccordionTrigger>PPF3 (Premium) - 175,000 Kshs | 2 Year Warranty</AccordionTrigger>
+                <AccordionTrigger>PPF3 (Premium) - 175,000 Kshs</AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-2">
                     <p className="font-medium">
                       Premium maximum protection film with industry-leading durability and performance.
                     </p>
                     <ul className="list-disc pl-5 space-y-1 text-sm">
-                      <li>10 mil thickness offers maximum protection against rock chips and impacts</li>
+                      <li>9.5 mil thickness offers maximum protection against rock chips and impacts</li>
                       <li>Professional-grade self-healing technology with rapid recovery</li>
                       <li>Ultra-clear finish with enhanced depth and gloss</li>
                       <li>Superior UV blocking prevents paint fading and oxidation</li>
@@ -422,10 +416,25 @@ Please provide me with more details. Thank you!`
                       <li>Temperature resistant from -40°F to 200°F</li>
                       <li><strong>10 years of durability</strong></li>
                     </ul>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                      <strong>Warranty:</strong> 2 year comprehensive coverage against all defects and performance
-                      issues
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="colored">
+                <AccordionTrigger>Colored PPF - 215,000 Kshs</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-2">
+                    <p className="font-medium">
+                      Color-change paint protection film that transforms your vehicle&apos;s look while delivering full
+                      paint protection in one install.
                     </p>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                      <li>Wide range of gloss and satin color options to refresh or restyle your car</li>
+                      <li>Durable PPF construction that guards against chips, scratches, and road debris</li>
+                      <li>Self-healing top coat helps keep the finish looking sharp</li>
+                      <li>UV-stable pigments help resist fading and yellowing</li>
+                      <li>Removable film that protects the original factory paint underneath</li>
+                      <li><strong>Ideal for a bold new look without permanent paintwork</strong></li>
+                    </ul>
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -485,6 +494,7 @@ Please provide me with more details. Thank you!`
                       <SelectItem value="pp1">PPF1 (Basic) - 125,000 Kshs</SelectItem>
                       <SelectItem value="pp2">PPF2 (Standard) - 150,000 Kshs</SelectItem>
                       <SelectItem value="pp3">PPF3 (Premium) - 175,000 Kshs</SelectItem>
+                      <SelectItem value="colored">Colored PPF - 215,000 Kshs</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
