@@ -121,31 +121,12 @@ Please get back to me. Thank you!`
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-2">Millan Auto Customs</h3>
-                <p>
-                  Gethin &amp; Dawson Shell Service Station
-                  <br />
-                  Karen shopping centre opp Police Station, 603, Nairobi South, KE
-                </p>
-                <p className="text-sm text-gray-400 mt-2">Landmark: Opposite Karen Police Station</p>
-                <div className="mt-4 h-64 w-full rounded-lg overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps?q=Gethin+%26+Dawson+Shell+Service+Station%2C+Karen+shopping+centre%2C+Nairobi&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Karen</h3>
+                <h3 className="text-xl font-semibold mb-2">Club M - Karen</h3>
                 <p>Mokoyeti Road West, Karen, Box 1075, Nairobi</p>
+                <p className="text-sm text-gray-400 mt-2">Landmark: Opposite Galleria Mall</p>
                 <div className="mt-4 h-64 w-full rounded-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps?q=Mokoyeti+Road+West%2C+Karen%2C+Nairobi%2C+Kenya&output=embed"
+                    src="https://www.google.com/maps?q=Club+M+Mokoyeti+Road+West+Karen+Nairobi&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
