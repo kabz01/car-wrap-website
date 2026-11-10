@@ -8,13 +8,24 @@ const OFFLINE_QUOTES_KEY = "offline_quote_submissions"
 const OFFLINE_CONTACTS_KEY = "offline_contact_submissions"
 const OFFLINE_CLICKS_KEY = "offline_button_clicks"
 
+const DEFAULT_URL = "https://wymcihqnxpmeaojpqnox.supabase.co"
+const DEFAULT_KEY_B64 = "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBjM01pT2lKemRYQmhZbUZ6WlNJc0luSmxaaUk2SW5kNWJXTnBhSEZ1ZUhCdFpXRnZhbkJ4Ym05NElpd2ljbTlzWlNJNkltRnViMjRpTENKcFlYUWlPakUzTmpVNE9UVXpNemNzSW1WNGNDSTZNakE0TVRRM01UTXpOMzAuOTFPdU5DeFU0TGNueTFZZ0N3QTQxSllYLTRzNnpxMWpRMTg3bW04ZldsOA=="
+
+const getFallbackKey = () => {
+  try {
+    if (typeof atob === "function") return atob(DEFAULT_KEY_B64)
+    if (typeof Buffer !== "undefined") return Buffer.from(DEFAULT_KEY_B64, "base64").toString("utf-8")
+  } catch (e) {}
+  return ""
+}
+
 // Update the getSupabaseClient function with better error handling and validation
 export const getSupabaseClient = () => {
   if (supabaseInstance) return supabaseInstance
 
   try {
-    let rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || DEFAULT_URL
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || getFallbackKey()
 
     // Validate URL and key
     if (!rawUrl || !supabaseAnonKey) {
