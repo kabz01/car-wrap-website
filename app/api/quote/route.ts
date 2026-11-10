@@ -7,7 +7,7 @@ export async function POST(request: Request) {
 
     const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wymcihqnxpmeaojpqnox.supabase.co'
     const supabaseUrl = rawUrl.trim().replace(/\/rest\/v1\/?$/i, '').replace(/\/+$/, '')
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5bWNpaHFueHBtZWFvanBxbm94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4OTUzMzcsImV4cCI6MjA4MTQ3MTMzN30.91OuNCxU4Lcny1YgCwA41JYX-4s6zq1jQ187mm8fWl8'
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
@@ -41,7 +41,7 @@ export async function GET() {
   try {
     const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wymcihqnxpmeaojpqnox.supabase.co'
     const supabaseUrl = rawUrl.trim().replace(/\/rest\/v1\/?$/i, '').replace(/\/+$/, '')
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind5bWNpaHFueHBtZWFvanBxbm94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4OTUzMzcsImV4cCI6MjA4MTQ3MTMzN30.91OuNCxU4Lcny1YgCwA41JYX-4s6zq1jQ187mm8fWl8'
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     const { data, error } = await supabase.from('quote_submissions').select('*').order('created_at', { ascending: false })
