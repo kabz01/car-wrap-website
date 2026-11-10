@@ -499,7 +499,7 @@ CREATE POLICY "Allow anon select on contact_submissions"
                 </p>
                 <div className="p-3 bg-black rounded font-mono text-xs text-emerald-400 overflow-x-auto">
                   NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co<br />
-                  NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                  NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key-here
                 </div>
                 <p className="text-xs text-gray-500 mt-2">
                   * Even without this configured, the website automatically saves 100% of submissions safely in the browser's local storage and forwards every quote directly to WhatsApp (0795557083).

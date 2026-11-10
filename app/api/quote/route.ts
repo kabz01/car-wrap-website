@@ -5,9 +5,17 @@ export async function POST(request: Request) {
   try {
     const quoteData = await request.json()
 
-    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wymcihqnxpmeaojpqnox.supabase.co'
+    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
     const supabaseUrl = rawUrl.trim().replace(/\/rest\/v1\/?$/i, '').replace(/\/+$/, '')
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.warn("Supabase credentials not configured in environment variables.")
+      return NextResponse.json({
+        success: false,
+        error: "Supabase credentials not configured in environment variables."
+      }, { status: 503 })
+    }
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
@@ -39,9 +47,17 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wymcihqnxpmeaojpqnox.supabase.co'
+    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
     const supabaseUrl = rawUrl.trim().replace(/\/rest\/v1\/?$/i, '').replace(/\/+$/, '')
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.warn("Supabase credentials not configured in environment variables.")
+      return NextResponse.json({
+        success: false,
+        error: "Supabase credentials not configured in environment variables."
+      }, { status: 503 })
+    }
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     const { data, error } = await supabase.from('quote_submissions').select('*').order('created_at', { ascending: false })
