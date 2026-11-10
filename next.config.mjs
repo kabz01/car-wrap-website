@@ -9,6 +9,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/car-wraps',
+        destination: '/paint-protection',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

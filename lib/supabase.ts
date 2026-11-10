@@ -13,14 +13,17 @@ export const getSupabaseClient = () => {
   if (supabaseInstance) return supabaseInstance
 
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    let rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
     // Validate URL and key
-    if (!supabaseUrl || !supabaseAnonKey) {
+    if (!rawUrl || !supabaseAnonKey) {
       console.warn("Supabase credentials not available")
       return null
     }
+
+    // Clean URL: strip any trailing /rest/v1 or trailing slash
+    const supabaseUrl = rawUrl.trim().replace(/\/rest\/v1\/?$/i, "").replace(/\/+$/, "")
 
     // Validate URL format
     try {
@@ -104,6 +107,7 @@ export const trackButtonClick = async (buttonName: string) => {
 }
 
 // Update the submitQuoteRequest function with offline support
+// Update the submitQuoteRequest function with server API + direct Supabase + offline support
 export const submitQuoteRequest = async (quoteData: any) => {
   // Add timestamp if not present
   const dataToSubmit = {
@@ -111,31 +115,44 @@ export const submitQuoteRequest = async (quoteData: any) => {
     created_at: quoteData.created_at || new Date().toISOString(),
   }
 
-  // Try to get Supabase client
+  // 1. Try server-side API route first (immune to client-side CORS / adblockers / bundle env cache)
+  try {
+    const apiRes = await fetch("/api/quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataToSubmit),
+    })
+
+    if (apiRes.ok) {
+      const json = await apiRes.json()
+      if (json.success) {
+        console.log("Quote successfully inserted into Supabase via /api/quote")
+        return { success: true, via: "api", data: json.data }
+      }
+    }
+  } catch (apiErr) {
+    console.warn("/api/quote attempt failed, falling back to direct Supabase client:", apiErr)
+  }
+
+  // 2. Try direct Supabase client
   const supabase = getSupabaseClient()
   if (!supabase) {
     console.log("Supabase client not available, storing quote offline")
-    const stored = storeOfflineData(OFFLINE_QUOTES_KEY, dataToSubmit)
+    storeOfflineData(OFFLINE_QUOTES_KEY, dataToSubmit)
     return { success: true, simulated: true, offline: true }
   }
 
   try {
-    // Use a timeout to prevent long-running requests
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000)
-
-    // Create the submission request with fetch options
-    const { error } = await supabase.from("quote_submissions").insert([dataToSubmit]).abortSignal(controller.signal)
-
-    clearTimeout(timeoutId)
+    const { data, error } = await supabase.from("quote_submissions").insert([dataToSubmit]).select()
 
     if (error) {
-      console.error("Error submitting quote:", error)
+      console.error("Direct Supabase error submitting quote:", error)
       storeOfflineData(OFFLINE_QUOTES_KEY, dataToSubmit)
       return { success: true, offline: true, error }
     }
 
-    return { success: true }
+    console.log("Quote successfully inserted via direct Supabase client")
+    return { success: true, data }
   } catch (error: any) {
     // Store offline if request fails
     console.error("Quote submission failed:", error.message || error)
@@ -145,6 +162,7 @@ export const submitQuoteRequest = async (quoteData: any) => {
 }
 
 // Update the submitContactForm function with offline support
+// Update the submitContactForm function with server API + direct Supabase + offline support
 export const submitContactForm = async (contactData: any) => {
   // Add timestamp if not present
   const dataToSubmit = {
@@ -152,31 +170,43 @@ export const submitContactForm = async (contactData: any) => {
     created_at: contactData.created_at || new Date().toISOString(),
   }
 
-  // Try to get Supabase client
+  // 1. Try server-side API route first
+  try {
+    const apiRes = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataToSubmit),
+    })
+
+    if (apiRes.ok) {
+      const json = await apiRes.json()
+      if (json.success) {
+        console.log("Contact form successfully inserted via /api/contact")
+        return { success: true, via: "api", data: json.data }
+      }
+    }
+  } catch (apiErr) {
+    console.warn("/api/contact attempt failed, falling back to direct Supabase client:", apiErr)
+  }
+
+  // 2. Try direct Supabase client
   const supabase = getSupabaseClient()
   if (!supabase) {
     console.log("Supabase client not available, storing contact form offline")
-    const stored = storeOfflineData(OFFLINE_CONTACTS_KEY, dataToSubmit)
+    storeOfflineData(OFFLINE_CONTACTS_KEY, dataToSubmit)
     return { success: true, simulated: true, offline: true }
   }
 
   try {
-    // Use a timeout to prevent long-running requests
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000)
-
-    // Create the submission request with fetch options
-    const { error } = await supabase.from("contact_submissions").insert([dataToSubmit]).abortSignal(controller.signal)
-
-    clearTimeout(timeoutId)
+    const { data, error } = await supabase.from("contact_submissions").insert([dataToSubmit]).select()
 
     if (error) {
-      console.error("Error submitting contact form:", error)
+      console.error("Direct Supabase error submitting contact form:", error)
       storeOfflineData(OFFLINE_CONTACTS_KEY, dataToSubmit)
       return { success: true, offline: true, error }
     }
 
-    return { success: true }
+    return { success: true, data }
   } catch (error: any) {
     // Store offline if request fails
     console.error("Contact form submission failed:", error.message || error)
@@ -293,5 +323,133 @@ export const syncOfflineData = async () => {
   return {
     success: true,
     results,
+  }
+}
+
+// Function to fetch all quotes (merging Supabase cloud + localStorage offline fallback)
+export const fetchQuotes = async () => {
+  const supabase = getSupabaseClient()
+  let onlineQuotes: any[] = []
+  let offlineQuotes: any[] = []
+
+  if (typeof window !== "undefined") {
+    try {
+      const stored = localStorage.getItem(OFFLINE_QUOTES_KEY)
+      if (stored) {
+        offlineQuotes = JSON.parse(stored).map((q: any, idx: number) => ({
+          ...q,
+          _source: "offline",
+          id: q.id || `offline-${idx}-${Date.now()}`,
+        }))
+      }
+    } catch (e) {
+      console.error("Error reading offline quotes:", e)
+    }
+  }
+
+  // 1. Try server-side API first
+  try {
+    const apiRes = await fetch("/api/quote")
+    if (apiRes.ok) {
+      const json = await apiRes.json()
+      if (json.success && Array.isArray(json.data)) {
+        onlineQuotes = json.data.map((q: any) => ({
+          ...q,
+          _source: "supabase",
+        }))
+      }
+    }
+  } catch (apiErr) {
+    // Fall back to direct client
+  }
+
+  // 2. If server API returned nothing, try direct client
+  if (onlineQuotes.length === 0 && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("quote_submissions")
+        .select("*")
+        .order("created_at", { ascending: false })
+
+      if (!error && data) {
+        onlineQuotes = data.map((q: any) => ({
+          ...q,
+          _source: "supabase",
+        }))
+      }
+    } catch (e) {
+      console.error("Error fetching quotes from Supabase:", e)
+    }
+  }
+
+  return {
+    onlineQuotes,
+    offlineQuotes,
+    allQuotes: [...offlineQuotes, ...onlineQuotes],
+    isSupabaseConnected: !!supabase,
+  }
+}
+
+// Function to fetch contact messages (merging Supabase cloud + localStorage offline fallback)
+export const fetchContacts = async () => {
+  const supabase = getSupabaseClient()
+  let onlineContacts: any[] = []
+  let offlineContacts: any[] = []
+
+  if (typeof window !== "undefined") {
+    try {
+      const stored = localStorage.getItem(OFFLINE_CONTACTS_KEY)
+      if (stored) {
+        offlineContacts = JSON.parse(stored).map((c: any, idx: number) => ({
+          ...c,
+          _source: "offline",
+          id: c.id || `offline-${idx}-${Date.now()}`,
+        }))
+      }
+    } catch (e) {
+      console.error("Error reading offline contacts:", e)
+    }
+  }
+
+  // 1. Try server-side API first
+  try {
+    const apiRes = await fetch("/api/contact")
+    if (apiRes.ok) {
+      const json = await apiRes.json()
+      if (json.success && Array.isArray(json.data)) {
+        onlineContacts = json.data.map((c: any) => ({
+          ...c,
+          _source: "supabase",
+        }))
+      }
+    }
+  } catch (apiErr) {
+    // Fall back to direct client
+  }
+
+  // 2. If server API returned nothing, try direct client
+  if (onlineContacts.length === 0 && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("contact_submissions")
+        .select("*")
+        .order("created_at", { ascending: false })
+
+      if (!error && data) {
+        onlineContacts = data.map((c: any) => ({
+          ...c,
+          _source: "supabase",
+        }))
+      }
+    } catch (e) {
+      console.error("Error fetching contacts from Supabase:", e)
+    }
+  }
+
+  return {
+    onlineContacts,
+    offlineContacts,
+    allContacts: [...offlineContacts, ...onlineContacts],
+    isSupabaseConnected: !!supabase,
   }
 }

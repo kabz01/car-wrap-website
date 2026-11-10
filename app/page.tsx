@@ -16,7 +16,6 @@ const testimonials = [
 ]
 
 const services = [
-  { name: "Car Wraps", path: "/car-wraps" },
   { name: "Paint Protection Film", path: "/paint-protection" },
   { name: "Ceramic Coating", path: "/ceramic-coating" },
 ]
@@ -59,7 +58,7 @@ export default function Home() {
       transition={{ duration: 0.5 }}
       className="min-h-screen"
     >
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-32">
         <motion.div
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
@@ -68,7 +67,7 @@ export default function Home() {
         >
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/istockphoto-1210897610-612x612.jpg-gUwZgQW1Iy1KsgDi2IUkSWyi1ezyHJ.jpeg"
-            alt="Professional car wrap installation"
+            alt="Professional PPF installation"
             fill
             className="object-cover object-center filter brightness-[0.85] contrast-[1.1]"
             priority
@@ -89,7 +88,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Transform Your Ride
+            Ultimate Paint Protection & Styling
           </motion.h3>
           <motion.p
             className="text-xl md:text-2xl mb-8"
@@ -97,7 +96,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Premium Car Wraps, Paint Protection, and More
+            Premium Paint Protection Film (PPF) and Advanced Ceramic Coating
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -108,10 +107,10 @@ export default function Home() {
               asChild
               size="lg"
               className="text-lg transform transition-all hover:scale-105 hover:shadow-lg bg-white text-black hover:bg-gray-200"
-              onClick={() => trackButtonClick("Explore Car Wraps")}
+              onClick={() => trackButtonClick("Explore PPF Protection")}
             >
-              <Link href="/car-wraps">
-                Explore Car Wraps <ChevronRight className="ml-2 h-5 w-5" />
+              <Link href="/paint-protection">
+                Explore PPF Protection <ChevronRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </motion.div>
@@ -121,27 +120,20 @@ export default function Home() {
       <section ref={ref} className="py-16 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 dark:text-white">Our Services</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
-                title: "Car Wraps",
-                image:
-                  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/custom%20wrap.jpg-hs7o1EY8VqQ4Uuk8mJxZLYCJGDSN6r.jpeg",
-                description: "Professional car wrap installation with precision and care",
-                link: "/car-wraps",
-              },
-              {
-                title: "Paint Protection",
+                title: "Paint Protection Film",
                 image:
                   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ppf.jpg-VL7GR7ndXyXB0QamHMH79DIT2G42zo.jpeg",
-                description: "Superior paint protection film installation for lasting protection",
+                description: "State-of-the-art self-healing TPU film protecting against stone chips, scratches, and stains",
                 link: "/paint-protection",
               },
               {
                 title: "Ceramic Coating",
                 image:
                   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ceramic-83F9IM1DmDWKE5Z5BmeYNfPPFDipbe.webp",
-                description: "Advanced ceramic coating for ultimate shine and protection",
+                description: "Advanced nanoceramic coating for extreme hydrophobic shine, slickness, and UV protection",
                 link: "/ceramic-coating",
               },
             ].map((service, index) => (

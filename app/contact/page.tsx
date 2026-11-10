@@ -21,9 +21,25 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     
     // Track the button click
     trackButtonClick("Submit Contact Form")
+
+    const contactData = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      created_at: new Date().toISOString(),
+    }
+
+    try {
+      await submitContactForm(contactData)
+    } catch (err) {
+      console.error("Error saving contact to database:", err)
+    } finally {
+      setIsSubmitting(false)
+    }
 
     const message = `Hello! I have a message for you:
 
@@ -41,7 +57,7 @@ Please get back to me. Thank you!`
   }
 
   return (
-    <div className="container mx-auto px-6 py-16 pt-32">
+    <div className="container mx-auto px-6 pb-16 pt-44 md:pt-48">
       <motion.h1
         className="text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0, y: -20 }}
@@ -117,14 +133,14 @@ Please get back to me. Thank you!`
         >
           <Card className="bg-gray-800 border-gray-700">
             <CardHeader>
-              <CardTitle>Our Locations</CardTitle>
+              <CardTitle>Our Location</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-2">Club M - Karen</h3>
-                <p>Mokoyeti Road West, Karen, Box 1075, Nairobi</p>
+                <h3 className="text-xl font-semibold mb-2">Millan Auto Customs — Karen</h3>
+                <p className="text-gray-300">Mokoyeti Road West, Karen, Box 1075, Nairobi, Kenya</p>
                 <p className="text-sm text-gray-400 mt-2">Landmark: Opposite Galleria Mall</p>
-                <div className="mt-4 h-64 w-full rounded-lg overflow-hidden">
+                <div className="mt-4 h-80 w-full rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps?q=Club+M+Mokoyeti+Road+West+Karen+Nairobi&output=embed"
                     width="100%"
@@ -139,7 +155,7 @@ Please get back to me. Thank you!`
               <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-lg border border-purple-500/20">
                 <h3 className="text-xl font-semibold mb-2">🚗 Mobile Service Available</h3>
                 <p className="text-gray-300">
-                  We bring our services to you! Enjoy the convenience of professional car wrapping, paint protection and ceramic coating services at your home or office location. Contact us to schedule a mobile appointment.
+                  We bring our services to you! Enjoy the convenience of professional paint protection and ceramic coating services at your home or office location. Contact us to schedule a mobile appointment.
                 </p>
               </div>
               <div>

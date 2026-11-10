@@ -10,6 +10,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { toast } from "@/components/ui/use-toast"
+import { trackButtonClick, submitQuoteRequest } from "@/lib/supabase"
 
 export default function CeramicCoating() {
   const [activeTab, setActiveTab] = useState("before")
@@ -29,12 +31,61 @@ export default function CeramicCoating() {
     setCurrentSlide((prev) => (prev - 1 + 5) % 5)
   }
 
-  const handleGetQuote = () => {
+  const handleGetQuote = async () => {
     const coatingTypeLabels: { [key: string]: string } = {
       "10h": "10H Basic Coating - 30,000 Kshs",
       "12h": "12H Standard coating - 42,000 Kshs",
       "20h": "20H premium coating - 56,000 Kshs",
       "crystal": "Crystal Interior coating - 20,000 Kshs",
+    }
+    const coatingPrices: { [key: string]: number } = {
+      "10h": 30000,
+      "12h": 42000,
+      "20h": 56000,
+      "crystal": 20000,
+    }
+
+    const selectedCoatingLabel = quoteForm.coatingType ? coatingTypeLabels[quoteForm.coatingType] : "Not selected"
+    const totalPrice = quoteForm.coatingType ? (coatingPrices[quoteForm.coatingType] || 0) : 0
+
+    // Record quote in Supabase database & localStorage
+    const quoteData = {
+      name: quoteForm.name || "Customer",
+      email: quoteForm.email || "",
+      phone: quoteForm.phone || "",
+      message: `Coating Type: ${selectedCoatingLabel}`,
+      color_name: selectedCoatingLabel,
+      car_type: "Ceramic Coating",
+      car_model: "Ceramic Coating Service",
+      total_price: totalPrice,
+      created_at: new Date().toISOString(),
+    }
+
+    try {
+      await trackButtonClick("Get Ceramic Coating Quote via WhatsApp")
+      await submitQuoteRequest(quoteData)
+
+      // Also trigger email notification asynchronously
+      fetch("/api/send-quote-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: quoteForm.name || "Customer",
+          email: quoteForm.email || "",
+          phone: quoteForm.phone || "",
+          message: quoteData.message,
+          colorName: selectedCoatingLabel,
+          carType: "Ceramic Coating",
+          totalPrice: totalPrice,
+        }),
+      }).catch((e) => console.log("Email error:", e))
+
+      toast({
+        title: "Quote Recorded! 🎉",
+        description: "Your quote has been saved. Opening WhatsApp...",
+      })
+    } catch (err) {
+      console.error("Error saving quote to database:", err)
     }
 
     const message = `Hello! I would like to get a quote for Ceramic Coating.
@@ -42,7 +93,7 @@ export default function CeramicCoating() {
 *Name:* ${quoteForm.name || "Not provided"}
 *Email:* ${quoteForm.email || "Not provided"}
 *Phone:* ${quoteForm.phone || "Not provided"}
-*Coating Type:* ${quoteForm.coatingType ? coatingTypeLabels[quoteForm.coatingType] : "Not selected"}
+*Coating Type:* ${selectedCoatingLabel}
 
 Please provide me with more details. Thank you!`
 
@@ -83,7 +134,7 @@ Please provide me with more details. Thank you!`
   ]
 
   return (
-    <div className="min-h-screen py-16 pt-32">
+    <div className="min-h-screen pb-16 pt-44 md:pt-48">
       {/* Hero Section */}
       <section className="container mx-auto px-4 mb-16">
         <motion.div
@@ -103,8 +154,8 @@ Please provide me with more details. Thank you!`
             className="text-lg"
             onClick={() => {
               const eventTitle = encodeURIComponent("Ceramic Coating Service - Millan Auto Customs")
-              const eventDetails = encodeURIComponent("Professional Ceramic Coating service appointment at Millan Auto Customs.\n\nLocation: Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will apply premium ceramic coating for ultimate protection and shine. Installation typically takes 1-2 days.")
-              const location = encodeURIComponent("Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya")
+              const eventDetails = encodeURIComponent("Professional Ceramic Coating service appointment at Millan Auto Customs.\n\nLocation: Mokoyeti Road West, Karen, Box 1075, Nairobi, Kenya\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will apply premium ceramic coating for ultimate protection and shine. Installation typically takes 1-2 days.")
+              const location = encodeURIComponent("Mokoyeti Road West, Karen, Nairobi, Kenya")
               const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&add=millanautocustoms@icloud.com`
               window.open(calendarUrl, "_blank")
             }}
@@ -492,8 +543,8 @@ Please provide me with more details. Thank you!`
               className="text-lg"
               onClick={() => {
                 const eventTitle = encodeURIComponent("Ceramic Coating Service - Millan Auto Customs")
-                const eventDetails = encodeURIComponent("Professional Ceramic Coating service appointment at Millan Auto Customs.\n\nLocation: Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will apply premium ceramic coating for ultimate protection and shine. Installation typically takes 1-2 days.")
-                const location = encodeURIComponent("Ngong Road, Past Karen Opposite Kerarapon Rd, Nairobi, Kenya")
+                const eventDetails = encodeURIComponent("Professional Ceramic Coating service appointment at Millan Auto Customs.\n\nLocation: Mokoyeti Road West, Karen, Box 1075, Nairobi, Kenya\nPhone: 0795557083\nEmail: millanautocustoms@icloud.com\n\nOur expert team will apply premium ceramic coating for ultimate protection and shine. Installation typically takes 1-2 days.")
+                const location = encodeURIComponent("Mokoyeti Road West, Karen, Nairobi, Kenya")
                 const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&add=millanautocustoms@icloud.com`
                 window.open(calendarUrl, "_blank")
               }}

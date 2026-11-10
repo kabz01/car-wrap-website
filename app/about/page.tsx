@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function About() {
   return (
-    <div className="container mx-auto px-6 py-16 pt-32">
+    <div className="container mx-auto px-6 pb-16 pt-44 md:pt-48">
       <motion.h1
         className="text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0, y: -20 }}
@@ -23,9 +23,9 @@ export default function About() {
         <Card className="bg-gray-800 border-gray-700">
           <CardContent className="p-6 space-y-6 text-lg">
             <p>
-              Millan Customz is a leading car wrap company dedicated to transforming vehicles with high-quality wraps, paint
-              protection films, and ceramic coatings. With years of experience and a passion for automotive aesthetics,
-              we've built a reputation for excellence in the industry.
+              Millan Customz is a leading vehicle protection studio dedicated to safeguarding and transforming vehicles
+              with premium Paint Protection Films (PPF) and professional ceramic coatings. With years of experience and
+              a passion for automotive aesthetics, we've built a reputation for excellence in the industry.
             </p>
             <p>
               Our team of skilled professionals uses cutting-edge technology and premium materials to ensure that every

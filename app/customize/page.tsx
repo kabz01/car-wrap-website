@@ -447,7 +447,7 @@ export default function Customize() {
   })
 
   return (
-    <div className="min-h-screen py-16 bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen pb-16 pt-44 md:pt-48 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.h1
           className="text-4xl font-bold text-center mb-12"

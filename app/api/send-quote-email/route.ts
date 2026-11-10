@@ -15,7 +15,7 @@ export async function POST(request: Request) {
         to: 'millanautocustoms@icloud.com',
         subject: `New Quote Request from ${name}`,
         html: `
-          <h2>New Car Wrap Quote Request</h2>
+          <h2>New PPF & Vehicle Protection Quote Request</h2>
           
           <h3>Customer Details:</h3>
           <ul>
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
           
           <h3>Quote Details:</h3>
           <ul>
-            <li><strong>Wrap Color:</strong> ${colorName}</li>
+            <li><strong>PPF Package / Color:</strong> ${colorName}</li>
             <li><strong>Vehicle Type:</strong> ${carType}</li>
             <li><strong>Total Price:</strong> KSh ${totalPrice?.toLocaleString()}</li>
           </ul>
@@ -46,16 +46,16 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: 'Millan Auto Customs <onboarding@resend.dev>', // Replace with your verified domain
         to: email,
-        subject: 'Your Car Wrap Quote Request Confirmation',
+        subject: 'Your Paint Protection Film (PPF) Quote Confirmation',
         html: `
-          <h2>Thank you for your interest in our car wrap services!</h2>
+          <h2>Thank you for your interest in our Paint Protection Film (PPF) services!</h2>
           
           <p>Dear ${name},</p>
           
           <p>We have received your quote request with the following details:</p>
           
           <ul>
-            <li><strong>Wrap Color:</strong> ${colorName}</li>
+            <li><strong>PPF Package / Color:</strong> ${colorName}</li>
             <li><strong>Vehicle Type:</strong> ${carType}</li>
             <li><strong>Estimated Price:</strong> KSh ${totalPrice?.toLocaleString()}</li>
           </ul>

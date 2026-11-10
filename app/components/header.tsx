@@ -45,7 +45,7 @@ const Header = () => {
             </Link>
           </motion.div>
           <div className="hidden md:flex items-center space-x-4">
-            {["Home", "Services", "Wraps", "About", "Contact"].map((item, index) => (
+            {["Home", "Services", "PPF", "About", "Contact"].map((item, index) => (
               <motion.div
                 key={item}
                 initial={{ opacity: 0, y: -20 }}
@@ -53,7 +53,7 @@ const Header = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link
-                  href={item === "Home" ? "/" : item === "Wraps" ? "/car-wraps" : `/${item.toLowerCase()}`}
+                  href={item === "Home" ? "/" : item === "PPF" ? "/paint-protection" : `/${item.toLowerCase()}`}
                   className="text-foreground/80 hover:text-foreground transition-colors duration-200"
                 >
                   {item}
